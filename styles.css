@@ -1,0 +1,498 @@
+:root {
+    --primary-color: #0066cc;
+    --primary-dark: #004d99;
+    --secondary-color: #00cc99;
+    --secondary-dark: #00aa80;
+    --accent-color: #ff6600;
+    --accent-dark: #e65c00;
+    --dark-color: #1a1a2e;
+    --darker-color: #121220;
+    --light-color: #f5f5f5;
+    --lighter-color: #ffffff;
+    --gray-color: #e0e0e0;
+    --dark-gray: #333333;
+    
+    --border-radius: 12px;
+    --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--darker-color);
+    color: var(--light-color);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tipografía */
+h1, h2, h3, h4 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.accent {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Contenedor principal */
+.holographic-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: 1;
+}
+
+/* Efecto holográfico base */
+.holographic-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+                rgba(0, 204, 153, 0.1) 0%, 
+                transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Header */
+.platform-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo {
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(0, 204, 153, 0.5));
+    transition: var(--transition-medium);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.main-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(0, 204, 153, 0.2);
+}
+
+.brand-name {
+    display: inline-block;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Tarjetas holográficas */
+.holographic-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--card-shadow), 
+                0 0 0 1px rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: var(--transition-medium);
+}
+
+.holographic-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 204, 153, 0.05),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 6s infinite;
+    z-index: -1;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Sección "Cómo funciona" */
+.how-it-works {
+    background: linear-gradient(135deg, 
+                rgba(0, 102, 204, 0.1) 0%, 
+                rgba(0, 204, 153, 0.1) 100%);
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 1.5rem;
+    color: var(--lighter-color);
+}
+
+.section-description {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Grid de beneficios */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    padding: 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-medium);
+    display: flex;
+    flex-direction: column;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--secondary-color);
+    transition: var(--transition-fast);
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1);
+}
+
+.benefit-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.benefit-description {
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+/* Sección de beneficios exclusivos */
+.exclusive-benefits {
+    background: linear-gradient(135deg, 
+                rgba(0, 204, 153, 0.1) 0%, 
+                rgba(0, 102, 204, 0.1) 100%);
+}
+
+.benefits-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.benefit-item {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    position: relative;
+    padding-left: 2.5rem;
+    transition: var(--transition-fast);
+}
+
+.benefit-item::before {
+    content: '✓';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.benefit-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(5px);
+}
+
+/* Sección CTA */
+.cta-section {
+    text-align: center;
+    margin: 4rem 0 2rem;
+}
+
+.cta-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.cta-description {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Formulario */
+.affiliate-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.2rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    color: var(--light-color);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+    backdrop-filter: blur(5px);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(0, 204, 153, 0.2);
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Botón CTA */
+.cta-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-medium);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+    transition: var(--transition-medium);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4);
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.button-icon {
+    font-size: 1.2rem;
+    transition: var(--transition-fast);
+}
+
+.cta-button:hover .button-icon {
+    transform: translateX(3px);
+}
+
+.form-disclaimer {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-top: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-medium);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--dark-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    transition: var(--transition-medium);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--light-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+    opacity: 1;
+    color: var(--secondary-color);
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.modal-message {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .holographic-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .holographic-card {
+        padding: 1.5rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-input {
+        padding: 0.9rem 1.2rem;
+    }
+    
+    .cta-button {
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .benefit-card {
+        padding: 1.3rem;
+    }
+    
+    .benefit-item {
+        padding: 0.8rem 1rem 0.8rem 2rem;
+    }
+}
