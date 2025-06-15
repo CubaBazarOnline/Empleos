@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="50x50" href="logo.png">
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <meta name="theme-color" content="#ffffff">
-    <title>Afiliados de CHP</title>
-    <meta name="description" content="Únete al programa de afiliados de CBO y gana un 10% por cada cliente que solicite un plan de pago CHP">
+    <meta name="description" content="Únete al programa de afiliados de CHP y gana un 10% por cada cliente que solicite un plan de pago">
+    <meta name="theme-color" content="#0066cc">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Afiliados de CHP | Gana comisiones recomendando nuestros servicios</title>
+    
+    <!-- Preload recursos críticos -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <canvas id="particlesCanvas"></canvas>
-    
-    <div class="container holographic-effect">
-        <!-- Logo CBO -->
-            <img src="logo.png" alt="CBO" width="50" height="50" loading="eager">
-        </div>
-    
     <div class="holographic-container">
-        <div class="holographic-effect"></div>
+        <div class="holographic-effect" aria-hidden="true"></div>
         
         <header class="platform-header">
             <div class="header-content">
@@ -32,49 +29,55 @@
         </header>
         
         <main class="platform-content">
-            <section class="holographic-card how-it-works">
-                <h2 class="section-title">¿Cómo <span class="accent">funciona</span>?</h2>
+            <section class="holographic-card how-it-works" aria-labelledby="how-it-works-title">
+                <h2 id="how-it-works-title" class="section-title">¿Cómo <span class="accent">funciona</span>?</h2>
                 <p class="section-description">Como afiliado de CHP, tienes una oportunidad única de generar ingresos pasivos a tu cuenta MiTranfer, recomendando nuestros servicios de paginas web adaptables.</p>
                 
                 <div class="benefits-grid">
                     <article class="benefit-card">
-                        <div class="benefit-icon">💼</div>
+                        <div class="benefit-icon" aria-hidden="true">💼</div>
                         <h3 class="benefit-title">Recomienda CHP</h3>
                         <p class="benefit-description">Por cada cliente que solicite un plan de pago de nuestra plataforma CHP a través de nuestro enlace, recibirás un <strong class="highlight">10% de comisión</strong> directa.</p>
                     </article>
                     
                     <article class="benefit-card">
-                        <div class="benefit-icon">🛠️</div>
+                        <div class="benefit-icon" aria-hidden="true">🛠️</div>
                         <h3 class="benefit-title">Asesoría Opcional</h3>
                         <p class="benefit-description">Puedes ofrecer <strong class="accent">asesoría personalizada</strong> al cliente para distribuir su plataforma web <em>sólo si lo solicita</em>. <strong>Tú defines el presupuesto</strong>, no la empresa.</p>
                     </article>
                     
                     <article class="benefit-card">
-                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-icon" aria-hidden="true">💰</div>
                         <h3 class="benefit-title">Ganancia Extra</h3>
-                        <p class="benefit-description">Planes de pago anuales genera comision extra, mientras el cliente mantenga su suscripción activa en el sistema.</p>
+                        <p class="benefit-description">Planes de pago anuales generan comisión extra, mientras el cliente mantenga su suscripción activa en el sistema.</p>
                     </article>
                 </div>
             </section>
             
-            <section class="cta-section">
-                <h2 class="cta-title">Transforma tu red en <span class="highlight">ingresos recurrentes</span></h2>
+            <section class="cta-section" aria-labelledby="cta-title">
+                <h2 id="cta-title" class="cta-title">Transforma tu red en <span class="highlight">ingresos recurrentes</span></h2>
                 <p class="cta-description">Regístrate ahora y comienza a generar comisiones con cada recomendación</p>
                 
-                <form id="affiliateForm" class="affiliate-form">
+                <form id="affiliateForm" class="affiliate-form" novalidate>
                     <div class="form-group">
-                        <input type="text" id="name" name="name" required class="form-input" placeholder="Nombre completo">
+                        <label for="name" class="sr-only">Nombre completo</label>
+                        <input type="text" id="name" name="name" required class="form-input" placeholder="Nombre completo" aria-required="true">
+                        <span class="error-message" id="name-error"></span>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" name="phone" required class="form-input" placeholder="Teléfono de contacto">
+                        <label for="phone" class="sr-only">Teléfono de contacto</label>
+                        <input type="tel" id="phone" name="phone" required class="form-input" placeholder="Teléfono de contacto" aria-required="true" pattern="[0-9]{8,15}">
+                        <span class="error-message" id="phone-error"></span>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" required class="form-input" placeholder="Correo electrónico">
+                        <label for="email" class="sr-only">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required class="form-input" placeholder="Correo electrónico" aria-required="true">
+                        <span class="error-message" id="email-error"></span>
                     </div>
                     
                     <button type="submit" class="cta-button">
                         <span class="button-text">Unirme al programa</span>
-                        <span class="button-icon">→</span>
+                        <span class="button-icon" aria-hidden="true">→</span>
                     </button>
                 </form>
                 
@@ -83,6 +86,7 @@
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Cargar script de forma asíncrona -->
+    <script src="script.js" async></script>
 </body>
 </html>
