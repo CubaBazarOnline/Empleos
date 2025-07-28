@@ -1,1 +1,433 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CHP - Programa de Afiliados</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>"><style>*,*:before,*:after{margin:0;padding:0;box-sizing:border-box}body{background:#1a1a2e;font-family:'Segoe UI',Roboto,sans-serif;color:#e6e6e6;line-height:1.6}.ham{width:48px;height:48px;background:rgba(40,40,60,0.9);border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:fixed;top:15px;right:20px;cursor:pointer;border:1px solid #444;z-index:99}.ham div{background:#4cc9f0;border-radius:3px;width:25px;height:3px;margin:2.5px;transition:all 0.3s ease}.ham.active div:first-child{transform:rotate(-45deg) translate(-5px,5px)}.ham.active div:nth-child(2){opacity:0}.ham.active div:last-child{transform:rotate(45deg) translate(-5px,-5px)}nav ul{position:fixed;left:-50%;top:0;width:50%;height:100vh;background:rgba(26,26,46,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0;padding:0;border-right:1px solid #4cc9f0;z-index:98;transition:all 0.3s ease}nav ul.show{left:0}nav h1{color:#4cc9f0;margin-bottom:20px;font-size:1.8rem}nav li{width:100%;text-align:center;padding:15px 0}nav a{color:#f8f8f8;font-size:1.2rem;display:block;padding:10px 0}.content-section{display:none;max-width:800px;margin:70px auto 20px;padding:20px}.content-section.active{display:block}.card{background:rgba(30,30,50,0.7);border-radius:10px;padding:20px;margin:15px 0;border-left:4px solid #4cc9f0}.card h3{color:#4cc9f0;margin-bottom:10px}.highlight{color:#4cc9f0;font-weight:bold}.icon{font-size:2rem;text-align:center;margin:20px auto;color:#4cc9f0}.btn{display:inline-block;background:linear-gradient(135deg,#4cc9f0,#4895ef);color:#fff;padding:12px 25px;border-radius:25px;margin:10px 0;cursor:pointer;border:none;font-size:1rem;transition:all 0.3s ease}.btn:hover{transform:translateY(-3px)}.progress-container{width:100%;background:rgba(76,201,240,0.2);border-radius:10px;margin:15px 0}.progress-bar{height:10px;background:linear-gradient(90deg,#4cc9f0,#4895ef);border-radius:10px;width:0%;transition:width 1s ease}.method-selector{display:flex;justify-content:space-around;margin:20px 0}.method-option{padding:15px;border-radius:10px;text-align:center;cursor:pointer;flex:1;margin:0 5px;transition:all 0.3s ease}.method-option.selected{background:rgba(76,201,240,0.3);border:1px solid #4cc9f0}.method-icon{font-size:2rem;margin-bottom:10px}input,select{width:100%;padding:10px;border-radius:5px;border:1px solid #444;background:rgba(255,255,255,0.1);color:#fff;margin-bottom:15px}label{display:block;margin-bottom:5px;color:#4cc9f0}@media (min-width:768px){nav ul{width:25%}.card{padding:25px}}@media (max-width:480px){.method-selector{flex-direction:column}.method-option{margin:5px 0}}</style></head><body><nav><ul id="menu"><h1>MENÚ</h1><li><a href="#" onclick="showSection('inicio')">INICIO</a></li><li><a href="#" onclick="showSection('comisiones')">COMISIONES</a></li><li><a href="#" onclick="showSection('requisitos')">REQUISITOS</a></li><li><a href="#" onclick="showSection('registro')">REGISTRO</a></li></ul></nav><div id="hamMenu" class="ham" onclick="toggleMenu()"><div></div><div></div><div></div></div><section id="inicio" class="content-section active"><div class="icon">🚀</div><div class="card"><h3>Gana dinero recomendando nuestros servicios</h3><p>Únete a nuestro programa de afiliados y comienza a generar ingresos recomendando nuestros servicios digitales. Gana por cada cliente que refieras.</p></div><div class="card"><h3>¿Cómo funciona?</h3><ol style="padding-left:20px;margin:10px 0"><li>Identificas clientes potenciales</li><li>Los derivas a nuestro equipo</li><li>Recibes tu comisión al completarse</li></ol><button class="btn" onclick="showSection('registro')">Quiero Empezar</button></div></section><section id="comisiones" class="content-section"><div class="icon">💸</div><div class="card"><h3>Ganancias por referencias</h3><p>Tus ingresos dependen directamente de la cantidad de clientes que refieras:</p><ul style="padding-left:20px;margin:10px 0"><li>Empiezas ganando <span class="highlight">30% por cada referencia</span></li><li>Aumentas hasta <span class="highlight">50%</span> según tu volumen mensual</li><li>Más clientes refieras = mayor porcentaje ganas</li></ul><p>Ejemplo con 10 referencias mensuales:</p><div class="progress-container"><div class="progress-bar" style="width:40%"></div></div><p>10 referencias × $200 promedio × 40% = <span class="highlight">$800 mensuales</span></p><button class="btn" onclick="showSection('registro')">Registrarme</button></div></section><section id="requisitos" class="content-section"><div class="icon">✅</div><div class="card"><h3>Requisitos básicos</h3><ul style="padding-left:20px;margin:10px 0"><li>Mayor de 18 años</li><li>Cuenta en Transfermóvil</li><li>Disponibilidad 5-10 horas semanales</li></ul><button class="btn" onclick="showSection('registro')">Cumplo los requisitos</button></div></section><section id="registro" class="content-section"><div class="icon">📝</div><div class="card"><h3>Completa tu registro</h3><form id="afiliadoForm" onsubmit="registrarAfiliado(event)"><label>Nombre Completo*</label><input type="text" required placeholder="Ej: María Pérez González"><label>Teléfono (Transfermóvil)*</label><input type="tel" required placeholder="Ej: 5350369270"><label>Correo Electrónico*</label><input type="email" required placeholder="Ej: tuemail@ejemplo.com"><label>Método de Confirmación*</label><div class="method-selector"><div class="method-option" onclick="selectMethod('whatsapp')"><div class="method-icon">💬</div><div>WhatsApp</div></div><div class="method-option" onclick="selectMethod('email')"><div class="method-icon">✉️</div><div>Email</div></div><div class="method-option" onclick="selectMethod('sms')"><div class="method-icon">📱</div><div>SMS</div></div></div><input type="hidden" id="selectedMethod" required><button type="submit" class="btn">Enviar Registro</button></form></div></section><script>let selectedMethod=null;const defaultWhatsapp='+5350369270';const defaultEmail='cubabazaronline@gmail.com';const defaultSms='+5350369270';function toggleMenu(){document.getElementById("hamMenu").classList.toggle("active");document.getElementById("menu").classList.toggle("show")}function showSection(sectionId){document.querySelectorAll('.content-section').forEach(s=>s.classList.remove('active'));document.getElementById(sectionId).classList.add('active');document.getElementById("hamMenu").classList.remove("active");document.getElementById("menu").classList.remove("show");window.scrollTo({top:0,behavior:'smooth'})}function selectMethod(method){selectedMethod=method;document.querySelectorAll('.method-option').forEach(o=>o.classList.remove('selected'));event.currentTarget.classList.add('selected');document.getElementById('selectedMethod').value=method}function registrarAfiliado(e){e.preventDefault();if(!selectedMethod){alert('Selecciona un método de confirmación');return}const nombre=document.querySelector('input[type="text"]').value;const telefono=document.querySelector('input[type="tel"]').value;const email=document.querySelector('input[type="email"]').value;const msg=`Nuevo afiliado:\nNombre: ${nombre}\nTel: ${telefono}\nEmail: ${email}\nMétodo: ${selectedMethod}`;if(selectedMethod==='whatsapp'){window.open(`https://wa.me/${defaultWhatsapp}?text=${encodeURIComponent(msg)}`,'_blank')}else if(selectedMethod==='sms'){window.open(`sms:${defaultSms}?body=${encodeURIComponent(msg)}`,'_blank')}else if(selectedMethod==='email'){window.open(`mailto:${defaultEmail}?subject=Nuevo Afiliado&body=${encodeURIComponent(msg)}`,'_blank')}alert('Registro enviado. Te contactaremos pronto.');e.target.reset();document.querySelectorAll('.method-option').forEach(o=>o.classList.remove('selected'));selectedMethod=null;showSection('inicio')}</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidades Laborales</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3063/3063187.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #1B5E20;
+            --accent-color: #4CAF50;
+            --dark-bg: #121212;
+            --card-bg: #1E1E1E;
+            --text-light: #f5f5f5;
+            --text-muted: #bdbdbd;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+            flex: 1;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            margin-bottom: 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .job-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .job-header {
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .job-header h2 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .job-toggle {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+        .job-card.active .job-toggle {
+            transform: rotate(45deg);
+        }
+        .job-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        .job-card.active .job-content {
+            max-height: 2000px;
+            padding: 15px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--secondary-color);
+            padding-bottom: 3px;
+            display: inline-block;
+        }
+        .section ul {
+            padding-left: 18px;
+        }
+        .section li {
+            margin-bottom: 6px;
+            position: relative;
+            list-style-type: none;
+            font-size: 0.95rem;
+        }
+        .section li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .whatsapp-btn i {
+            margin-right: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        .policy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .policy-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        .modal h2 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .modal h3 {
+            color: var(--accent-color);
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+        }
+        .modal p, .modal ul {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .modal ul {
+            padding-left: 20px;
+        }
+        .coming-soon {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            header {
+                padding: 15px 0;
+            }
+            header h1 {
+                font-size: 1.7rem;
+            }
+            .job-header {
+                padding: 12px;
+            }
+            .job-header h2 {
+                font-size: 1.1rem;
+            }
+            .modal-content {
+                margin: 10% auto;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-briefcase"></i> CBO Empleos</h1>
+            <p>Encuentra las mejores oportunidades laborales</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="job-card">
+            <div class="job-header">
+                <h2>Afiliado a los servicios de CHP</h2>
+                <span class="job-toggle">+</span>
+            </div>
+            <div class="job-content">
+                <div class="section">
+                    <h3><i class="fas fa-info-circle"></i> Descripción</h3>
+                    <p>Gestionar y promover servicios habitacionales de CHP, brindando asesoría a clientes y manteniendo su relación.</p>
+                </div>
+                <div class="section">
+                    <h3><i class="fas fa-money-bill-wave"></i> Beneficios</h3>
+                    <ul>
+                        <li>Salario base: $800 - $1000 mensual</li>
+                        <li>Bonos por desempeño: hasta $300 adicional</li>
+                        <li>Comisiones por clientes: 30-50%</li>
+                        <li>Pago inmediato garantizado</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h3><i class="fas fa-user-check"></i> Requisitos</h3>
+                    <ul>
+                        <li>Mayor de 18 años</li>
+                        <li>Experiencia en ventas y marketing</li>
+                        <li>Horario laboral flexible: 2h</li>
+                        <li>Habilidades comunicativas</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h3><i class="fas fa-tasks"></i> Qué se debe hacer</h3>
+                    <ul>
+                        <li>Promocionar los servicios habitacionales de CHP</li>
+                        <li>Gestionar los datos personales del cliente</li>
+                        <li>Atender consultas de clientes</li>
+                        <li>Realizar seguimiento a clientes existentes</li>
+                        <li>Saber qué necesita el cliente</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/5350369270?text=Estoy%20interesado%20en%20el%20puesto%20de%20Afiliado%20a%20los%20servicios%20de%20CHP" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <h2>Asistente Administrativo</h2>
+                <span class="job-toggle">+</span>
+            </div>
+            <div class="job-content">
+                <div class="coming-soon">
+                    <p>Próximamente más información sobre este puesto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>CBO Empleos © 2025</p>
+            <button class="policy-btn" id="policyBtn">
+                <i class="fas fa-gavel"></i> Políticas y Leyes Laborales
+            </button>
+        </div>
+    </footer>
+
+    <div class="modal" id="policyModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2><i class="fas fa-balance-scale"></i> Políticas y Leyes Laborales de Cuba</h2>
+            
+            <h3>Ley No. 116 - Código de Trabajo</h3>
+            <p>Normativa fundamental que regula las relaciones laborales en Cuba, estableciendo derechos y obligaciones de trabajadores y empleadores.</p>
+            <ul>
+                <li>Derecho al trabajo y protección laboral</li>
+                <li>Jornada laboral máxima de 8 horas diarias</li>
+                <li>Derecho a vacaciones remuneradas</li>
+                <li>Protección a grupos vulnerables</li>
+            </ul>
+            
+            <h3>Políticas de Empleo en Cuba</h3>
+            <p>Principios que rigen el mercado laboral cubano según el Ministerio de Trabajo y Seguridad Social:</p>
+            <ul>
+                <li>Igualdad de oportunidades</li>
+                <li>Prohibición de discriminación</li>
+                <li>Protección salarial garantizada</li>
+                <li>Formación y capacitación continua</li>
+            </ul>
+            
+            <h3>Normativas para el Trabajo por Cuenta Propia</h3>
+            <p>Regulaciones específicas para el sector privado y cooperativo:</p>
+            <ul>
+                <li>Licencia laboral obligatoria</li>
+                <li>Declaración de impuestos</li>
+                <li>Contratación limitada de personal</li>
+                <li>Prohibición de actividades especulativas</li>
+            </ul>
+            
+            <h3>Protección al Trabajador</h3>
+            <p>Derechos fundamentales garantizados:</p>
+            <ul>
+                <li>Seguridad social universal</li>
+                <li>Derecho a sindicalización</li>
+                <li>Protección contra despidos injustificados</li>
+                <li>Condiciones laborales dignas</li>
+            </ul>
+            
+            <p><em>Nota: Esta plataforma cumple con todas las regulaciones laborales vigentes en Cuba. Cualquier oferta publicada está sujeta a verificación de cumplimiento legal.</em></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestión de tarjetas de empleo
+            const jobCards = document.querySelectorAll('.job-card');
+            
+            function toggleCard(card) {
+                const content = card.querySelector('.job-content');
+                const isActive = card.classList.contains('active');
+                
+                jobCards.forEach(c => {
+                    c.classList.remove('active');
+                    c.querySelector('.job-content').style.maxHeight = '0';
+                    c.querySelector('.job-content').style.padding = '0 15px';
+                });
+                
+                if (!isActive) {
+                    card.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.padding = '15px';
+                }
+            }
+            
+            jobCards.forEach(card => {
+                card.querySelector('.job-header').addEventListener('click', () => toggleCard(card));
+                card.querySelector('.job-header').addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleCard(card);
+                    }
+                });
+            });
+            
+            // Gestión de WhatsApp
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.whatsapp-btn')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.whatsapp-btn');
+                    const jobTitle = btn.closest('.job-card').querySelector('.job-header h2').textContent;
+                    
+                    if(confirm(`¿Confirmas que deseas aplicar al puesto:\n"${jobTitle}"?`)) {
+                        window.location.href = btn.href;
+                    }
+                }
+            });
+            
+            // Gestión del modal de políticas
+            const modal = document.getElementById('policyModal');
+            const policyBtn = document.getElementById('policyBtn');
+            const closeModal = document.getElementById('closeModal');
+            
+            policyBtn.addEventListener('click', () => {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
