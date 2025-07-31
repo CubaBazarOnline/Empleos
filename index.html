@@ -3,241 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oportunidades Laborales</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3063/3063187.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Oportunidades laborales en Cuba - Encuentra los mejores empleos">
+    <title>CBO Empleos - Oportunidades Laborales</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2E7D32;
-            --secondary-color: #1B5E20;
-            --accent-color: #4CAF50;
-            --dark-bg: #121212;
+            --primary: #2E7D32;
+            --primary-dark: #1B5E20;
+            --accent: #4CAF50;
+            --bg-dark: #121212;
             --card-bg: #1E1E1E;
             --text-light: #f5f5f5;
             --text-muted: #bdbdbd;
+            --shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+        
         body {
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--dark-bg);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.5;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
+        
         .container {
-            max-width: 900px;
+            width: min(900px, 100% - 2rem);
             margin: 0 auto;
-            padding: 15px;
+            padding: 1rem;
             flex: 1;
         }
+        
         header {
             text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            margin-bottom: 20px;
+            padding: 1.5rem 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
         }
+        
         header h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin-bottom: 0.5rem;
         }
-        header p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
+        
         .job-card {
             background-color: var(--card-bg);
-            border-radius: 8px;
+            border-radius: 0.5rem;
             overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow);
         }
-        .job-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
+        
         .job-header {
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.2);
-            cursor: pointer;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            background-color: rgba(0,0,0,0.1);
         }
+        
         .job-header h2 {
-            color: var(--accent-color);
-            font-size: 1.3rem;
+            color: var(--accent);
+            font-size: 1.1rem;
             margin: 0;
         }
+        
         .job-toggle {
-            font-size: 1.3rem;
-            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
         }
+        
         .job-card.active .job-toggle {
             transform: rotate(45deg);
         }
+        
         .job-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
+            transition: max-height 0.3s ease;
         }
+        
         .job-card.active .job-content {
-            max-height: 2000px;
-            padding: 15px;
+            max-height: 1000px;
+            padding: 1rem;
         }
+        
         .section {
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
+        
         .section h3 {
-            color: var(--accent-color);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--secondary-color);
-            padding-bottom: 3px;
-            display: inline-block;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--primary-dark);
+            padding-bottom: 0.25rem;
         }
+        
         .section ul {
-            padding-left: 18px;
-        }
-        .section li {
-            margin-bottom: 6px;
-            position: relative;
+            padding-left: 1.25rem;
             list-style-type: none;
-            font-size: 0.95rem;
         }
-        .section li:before {
+        
+        .section li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .section li::before {
             content: "•";
-            color: var(--accent-color);
+            color: var(--accent);
             font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+            position: absolute;
+            left: -1rem;
         }
+        
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
+            gap: 0.5rem;
             background-color: #25D366;
             color: white;
-            padding: 10px 16px;
-            border-radius: 5px;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 12px;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
         }
+        
         .whatsapp-btn:hover {
             background-color: #128C7E;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
-        .whatsapp-btn i {
-            margin-right: 6px;
-            font-size: 1.1rem;
-        }
+        
         footer {
             text-align: center;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.4);
+            padding: 1rem;
+            background-color: rgba(0,0,0,0.2);
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 30px;
+            font-size: 0.85rem;
+            margin-top: 2rem;
         }
+        
         .policy-btn {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
             cursor: pointer;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+        
         .policy-btn:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-dark);
         }
+        
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            inset: 0;
+            background-color: rgba(0,0,0,0.7);
             z-index: 1000;
             overflow-y: auto;
+            padding: 1rem;
         }
+        
         .modal-content {
             background-color: var(--card-bg);
-            margin: 5% auto;
-            padding: 20px;
-            border-radius: 8px;
+            margin: 1rem auto;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
             max-width: 800px;
-            width: 90%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
             position: relative;
         }
+        
         .close-modal {
             position: absolute;
-            top: 10px;
-            right: 15px;
+            top: 0.5rem;
+            right: 1rem;
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-muted);
         }
+        
         .modal h2 {
-            color: var(--accent-color);
-            margin-bottom: 15px;
+            color: var(--accent);
+            margin-bottom: 1rem;
             text-align: center;
         }
+        
         .modal h3 {
-            color: var(--accent-color);
-            margin: 15px 0 10px;
-            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
         }
+        
         .modal p, .modal ul {
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
         }
+        
         .modal ul {
-            padding-left: 20px;
+            padding-left: 1.25rem;
         }
+        
         .coming-soon {
             text-align: center;
-            padding: 20px;
+            padding: 1rem;
             color: var(--text-muted);
             font-style: italic;
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            header {
-                padding: 15px 0;
-            }
-            header h1 {
-                font-size: 1.7rem;
-            }
-            .job-header {
-                padding: 12px;
-            }
-            .job-header h2 {
-                font-size: 1.1rem;
-            }
-            .modal-content {
-                margin: 10% auto;
-                padding: 15px;
-            }
         }
     </style>
 </head>
@@ -249,31 +240,31 @@
         </div>
     </header>
 
-    <div class="container">
+    <main class="container">
         <div class="job-card">
-            <div class="job-header">
+            <div class="job-header" tabindex="0" role="button" aria-expanded="false" aria-controls="job1-content">
                 <h2>Afiliado a los servicios de CHP</h2>
-                <span class="job-toggle">+</span>
+                <span class="job-toggle" aria-hidden="true">+</span>
             </div>
-            <div class="job-content">
+            <div class="job-content" id="job1-content">
                 <div class="section">
                     <h3><i class="fas fa-info-circle"></i> Descripción</h3>
-                    <p>Gestionar y promover servicios habitacionales de CHP, brindando asesoría a clientes y manteniendo su relación.</p>
+                    <p>Como afiliado y gestor de esta plataforma, tu objetivo es promover los servicios de CHP, brindar asesoría a clientes y mantener su relación.</p>
                 </div>
                 <div class="section">
                     <h3><i class="fas fa-money-bill-wave"></i> Beneficios</h3>
                     <ul>
-                        <li>Salario base: $800 - $1000 mensual</li>
-                        <li>Bonos por desempeño: hasta $300 adicional</li>
-                        <li>Comisiones por clientes: 30-50%</li>
-                        <li>Pago inmediato garantizado</li>
+                        <li>Salario mensual por membresía: 30%</li>
+                        <li>Bonos por desempeño: 10%</li>
+                        <li>Comisiones iniciales por clientes: 30-50% (según la cantidad)</li>
+                        <li>Pago inmediato garantizado: 100% seguro</li>
                     </ul>
                 </div>
                 <div class="section">
                     <h3><i class="fas fa-user-check"></i> Requisitos</h3>
                     <ul>
                         <li>Mayor de 18 años</li>
-                        <li>Experiencia en ventas y marketing</li>
+                        <li>Experiencia en ventas o marketing</li>
                         <li>Horario laboral flexible: 2h</li>
                         <li>Habilidades comunicativas</li>
                     </ul>
@@ -281,45 +272,45 @@
                 <div class="section">
                     <h3><i class="fas fa-tasks"></i> Qué se debe hacer</h3>
                     <ul>
-                        <li>Promocionar los servicios habitacionales de CHP</li>
-                        <li>Gestionar los datos personales del cliente</li>
-                        <li>Atender consultas de clientes</li>
+                        <li>Promocionar los servicios habitacionales de CubaHostPro (CHP)</li>
+                        <li>Gestionar los datos personales del cliente (Nombre, teléfono, Gmail)</li>
+                        <li>Atender las consultas de clientes</li>
                         <li>Realizar seguimiento a clientes existentes</li>
-                        <li>Saber qué necesita el cliente</li>
+                        <li>Saber qué necesita el cliente (Importante)</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/5350369270?text=Estoy%20interesado%20en%20el%20puesto%20de%20Afiliado%20a%20los%20servicios%20de%20CHP" class="whatsapp-btn">
+                <a href="https://wa.me/5350369270?text=Estoy%20interesado%20en%20el%20puesto%20de%20Afiliado%20a%20los%20servicios%20de%20CHP" class="whatsapp-btn" aria-label="Contactar por WhatsApp sobre este puesto">
                     <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
                 </a>
             </div>
         </div>
 
         <div class="job-card">
-            <div class="job-header">
+            <div class="job-header" tabindex="0" role="button" aria-expanded="false" aria-controls="job2-content">
                 <h2>Asistente Administrativo</h2>
-                <span class="job-toggle">+</span>
+                <span class="job-toggle" aria-hidden="true">+</span>
             </div>
-            <div class="job-content">
+            <div class="job-content" id="job2-content">
                 <div class="coming-soon">
-                    <p>Próximamente más información sobre este puesto</p>
+                    <p>Próximamente más información sobre este empleo</p>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="container">
-            <p>CBO Empleos © 2025</p>
-            <button class="policy-btn" id="policyBtn">
+            <p>CBO Empleos © <span id="current-year">2025</span></p>
+            <button class="policy-btn" id="policyBtn" aria-label="Ver políticas y leyes laborales">
                 <i class="fas fa-gavel"></i> Políticas y Leyes Laborales
             </button>
         </div>
     </footer>
 
-    <div class="modal" id="policyModal">
+    <div class="modal" id="policyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <h2><i class="fas fa-balance-scale"></i> Políticas y Leyes Laborales de Cuba</h2>
+            <button class="close-modal" id="closeModal" aria-label="Cerrar modal">&times;</button>
+            <h2 id="modalTitle"><i class="fas fa-balance-scale"></i> Políticas y Leyes Laborales de Cuba</h2>
             
             <h3>Ley No. 116 - Código de Trabajo</h3>
             <p>Normativa fundamental que regula las relaciones laborales en Cuba, estableciendo derechos y obligaciones de trabajadores y empleadores.</p>
@@ -363,70 +354,116 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gestión de tarjetas de empleo
+            // Actualizar año actual
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Gestión de tarjetas de empleo (mejorado para accesibilidad)
             const jobCards = document.querySelectorAll('.job-card');
             
-            function toggleCard(card) {
-                const content = card.querySelector('.job-content');
+            function toggleCard(card, focusContent = false) {
                 const isActive = card.classList.contains('active');
+                const content = card.querySelector('.job-content');
+                const header = card.querySelector('.job-header');
                 
+                // Cerrar todas las tarjetas primero
                 jobCards.forEach(c => {
-                    c.classList.remove('active');
-                    c.querySelector('.job-content').style.maxHeight = '0';
-                    c.querySelector('.job-content').style.padding = '0 15px';
+                    if (c !== card) {
+                        c.classList.remove('active');
+                        const otherContent = c.querySelector('.job-content');
+                        otherContent.style.maxHeight = '0';
+                        c.querySelector('.job-header').setAttribute('aria-expanded', 'false');
+                    }
                 });
                 
+                // Alternar estado de la tarjeta actual
                 if (!isActive) {
                     card.classList.add('active');
                     content.style.maxHeight = content.scrollHeight + 'px';
-                    content.style.padding = '15px';
+                    header.setAttribute('aria-expanded', 'true');
+                    
+                    if (focusContent) {
+                        content.focus();
+                    }
+                } else {
+                    card.classList.remove('active');
+                    content.style.maxHeight = '0';
+                    header.setAttribute('aria-expanded', 'false');
                 }
             }
             
+            // Event listeners mejorados
             jobCards.forEach(card => {
-                card.querySelector('.job-header').addEventListener('click', () => toggleCard(card));
-                card.querySelector('.job-header').addEventListener('keydown', (e) => {
+                const header = card.querySelector('.job-header');
+                const content = card.querySelector('.job-content');
+                
+                // Click/touch
+                header.addEventListener('click', () => toggleCard(card, true));
+                
+                // Teclado
+                header.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        toggleCard(card);
+                        toggleCard(card, true);
                     }
                 });
+                
+                // Mejorar accesibilidad del contenido
+                content.setAttribute('tabindex', '-1');
             });
             
-            // Gestión de WhatsApp
+            // Gestión de WhatsApp con confirmación accesible
             document.addEventListener('click', function(e) {
-                if (e.target.closest('.whatsapp-btn')) {
+                const whatsappBtn = e.target.closest('.whatsapp-btn');
+                if (whatsappBtn) {
                     e.preventDefault();
-                    const btn = e.target.closest('.whatsapp-btn');
-                    const jobTitle = btn.closest('.job-card').querySelector('.job-header h2').textContent;
+                    const jobTitle = whatsappBtn.closest('.job-card').querySelector('.job-header h2').textContent;
                     
-                    if(confirm(`¿Confirmas que deseas aplicar al puesto:\n"${jobTitle}"?`)) {
-                        window.location.href = btn.href;
+                    if (confirm(`¿Confirmas que deseas aplicar al puesto:\n"${jobTitle}"?`)) {
+                        window.location.href = whatsappBtn.href;
                     }
                 }
             });
             
-            // Gestión del modal de políticas
+            // Gestión del modal de políticas (mejorado)
             const modal = document.getElementById('policyModal');
             const policyBtn = document.getElementById('policyBtn');
             const closeModal = document.getElementById('closeModal');
             
-            policyBtn.addEventListener('click', () => {
+            function openModal() {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
-            });
+                document.addEventListener('keydown', handleEscape);
+            }
             
-            closeModal.addEventListener('click', () => {
+            function closeModalFn() {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
-            });
+                document.removeEventListener('keydown', handleEscape);
+                policyBtn.focus();
+            }
+            
+            function handleEscape(e) {
+                if (e.key === 'Escape') {
+                    closeModalFn();
+                }
+            }
+            
+            policyBtn.addEventListener('click', openModal);
+            closeModal.addEventListener('click', closeModalFn);
             
             window.addEventListener('click', (e) => {
                 if (e.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
+                    closeModalFn();
                 }
             });
+            
+            // Mejorar rendimiento: Cargar Font Awesome solo cuando sea necesario
+            if (!document.querySelector('.fa-briefcase')) {
+                const faLink = document.createElement('link');
+                faLink.rel = 'stylesheet';
+                faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+                document.head.appendChild(faLink);
+            }
         });
     </script>
 </body>
